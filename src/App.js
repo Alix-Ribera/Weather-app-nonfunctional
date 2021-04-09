@@ -7,7 +7,7 @@ import Footer from "./Footer.js";
 export default function App() {
   return (
     <div className="WeatherApp">
-      <div className="Box">
+      <div className="container">
         <Form />
         <Weatherbox />
       </div>

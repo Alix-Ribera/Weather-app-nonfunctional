@@ -1,10 +1,6 @@
 import React from "react";
-/*import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCloudSun } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faCloudSun)*/
-
-function WeeklyPredictions() {
+export default function WeeklyPredictions() {
   return (
     <div className="row d-flex justify-content-between WeeklyPredictions">
       <div className="col text-center">
@@ -55,4 +51,3 @@ function WeeklyPredictions() {
     </div>
   );
 }
-export default WeeklyPredictions;

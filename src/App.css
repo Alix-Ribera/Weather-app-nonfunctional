@@ -48,6 +48,7 @@ input {
   margin-top: 20px;
   padding: 100px 100px;
   border-bottom: none;
+  margin: 30px 170px auto 170px;
 }
 h1 {
   font-size: 100px;
@@ -91,7 +92,8 @@ ul {
 .predictions {
   margin: 40px 0px 0px 0px;
 }
-.weatherPredictions {
+.WeeklyPredictions {
+  padding-top: 100px;
   margin-left: 38px;
 }
 .authorCredit {

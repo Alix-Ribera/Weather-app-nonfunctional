@@ -7,7 +7,7 @@ export default function Footer() {
           Open-source code
         </a>
         : by{" "}
-        <a href="https://alixribera.wixsite.com/myportfolio" target="_blank">
+        <a href="https://alixribera.wixsite.com/myportfolio">
           &nbsp;Alix Simo Ribera
         </a>
       </p>

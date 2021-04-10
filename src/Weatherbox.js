@@ -5,7 +5,7 @@ import WeeklyPredictions from "./WeeklyPredictions.js";
 
 export default function Weatherbox(props) {
   let [weatherData, setweatherData] = useState({ ready: false });
-  let [city, setCity] = useState("props.defaultCity");
+  let [city, setCity] = useState(props.defaultCity);
 
   function handleGather(response) {
     setweatherData({
@@ -15,7 +15,7 @@ export default function Weatherbox(props) {
       humidity: response.data.main.humidity,
       date: new Date(response.data.dt * 1000),
       description: response.data.weather[0].description,
-      icon: response.data.weather[0].icon,
+      icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       wind: response.data.wind.speed,
       city: response.data.name,
     });
@@ -29,7 +29,7 @@ export default function Weatherbox(props) {
   }
   function gather() {
     let apiKey = "4c78486a431b8f549b8a4a69a0294ae9";
-    let url = `api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(url).then(handleGather);
   }
 
@@ -53,9 +53,11 @@ export default function Weatherbox(props) {
                 Current location
               </button>
             </form>
-            <Weather data={weatherData} />
-            <WeeklyPredictions />
           </div>
+        </div>
+        <div className="weatherbox">
+          <Weather data={weatherData} />
+          <WeeklyPredictions />
         </div>
       </div>
     );

@@ -62,7 +62,7 @@ input {
   border: 2px solid white;
   border-radius: 20px;
   margin-top: 20px;
-  padding: 100px 100px;
+  padding: 100px 100px 50px 100px;
   border-bottom: none;
 }
 .inactive:hover {
@@ -88,7 +88,7 @@ input {
   color: white;
 }
 .WeeklyPredictions {
-  margin: 20px 0px 30px 0px;
+  margin: 100px 0px 30px 0px;
 }
 .authorCredit {
   text-align: center;

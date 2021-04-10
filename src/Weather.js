@@ -8,7 +8,6 @@ export default function Weather(props) {
       <div className="col-3">
         <div className="dayspecs">
           <ul>
-            <li>Real feel: {props.data.realfeel}</li>
             <li>Humidity: {props.data.humidity}%</li>
             <li>Wind Speed: {props.data.wind} km/h</li>
             <li>Description: {props.data.description} </li>

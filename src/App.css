@@ -23,7 +23,12 @@ p {
   font-size: 20px;
 }
 a {
+  color: #8e0e1e;
+  text-decoration: none;
+}
+a:hover {
   color: white;
+  text-decoration: none;
 }
 ul {
   padding-inline-start: 10px;
@@ -64,19 +69,6 @@ input {
   margin-top: 20px;
   padding: 100px 100px 50px 100px;
   border-bottom: none;
-}
-.inactive:hover {
-  text-decoration: none;
-  cursor: pointer;
-  color: rgb(233, 69, 69);
-}
-.inactive {
-  color: rgb(233, 69, 69);
-}
-.active:hover {
-  text-decoration: none;
-  cursor: default;
-  color: white;
 }
 .dayspecs {
   font-size: 18px;

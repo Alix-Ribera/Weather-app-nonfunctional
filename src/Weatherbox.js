@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Weather from "./Weather";
-import WeeklyPredictions from "./WeeklyPredictions.js";
+import Weather from "./Weather.js";
+import WeatherForecast from "./WeatherForecast.js";
 
 export default function Weatherbox(props) {
   let [weatherData, setweatherData] = useState({ ready: false });
@@ -57,7 +57,7 @@ export default function Weatherbox(props) {
         </div>
         <div className="weatherbox">
           <Weather data={weatherData} />
-          <WeeklyPredictions />
+          <WeatherForecast coordinates={weatherData.coordinates} />
         </div>
       </div>
     );

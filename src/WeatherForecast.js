@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import WeatherForecastDay from "./WeatherForecastDay.js";
 
 export default function WeatherForecast(props) {
   let [loaded, setLoaded] = useState(false);
   let [forecast, setForecast] = useState(null);
+
+  useEffect(() => {
+    setLoaded(false);
+  }, [props.coordinates]);
 
   function handleResponse(response) {
     setForecast(response.data.daily);
@@ -16,7 +20,7 @@ export default function WeatherForecast(props) {
       <div className="row d-flex justify-content-between WeatherForecast">
         {forecast.map(function (dailyForecast, index) {
           return (
-            <div className="col text-center">
+            <div className="col text-center" key={index}>
               <WeatherForecastDay data={dailyForecast} />
             </div>
           );

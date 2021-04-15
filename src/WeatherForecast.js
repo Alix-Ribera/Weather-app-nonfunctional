@@ -14,9 +14,13 @@ export default function WeatherForecast(props) {
   if (loaded) {
     return (
       <div className="row d-flex justify-content-between WeatherForecast">
-        <div className="col text-center">
-          <WeatherForecastDay data={forecast[0]} />
-        </div>
+        {forecast.map(function (dailyForecast, index) {
+          return (
+            <div className="col text-center">
+              <WeatherForecastDay data={dailyForecast} />
+            </div>
+          );
+        })}
       </div>
     );
   } else {

@@ -32,6 +32,13 @@ export default function Weatherbox(props) {
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(url).then(handleGather);
   }
+  function gatherCoords() {
+    let apiKey = "4c78486a431b8f549b8a4a69a0294ae9";
+    let lon = props.coordinates.lon;
+    let lat = props.coordinates.lat;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleGather);
+  }
 
   if (weatherData.ready) {
     return (
@@ -49,7 +56,11 @@ export default function Weatherbox(props) {
               <button className="searchbutton" type="submit" value="submit">
                 Search
               </button>
-              <button className="searchbutton" type="submit" value="submit">
+              <button
+                className="searchbutton"
+                type="submit"
+                onClick={gatherCoords}
+              >
                 Current location
               </button>
             </form>

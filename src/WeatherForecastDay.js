@@ -18,16 +18,18 @@ export default function WeatherForecastDay(props) {
   }
   return (
     <div>
-      <div className="WeatherForecast-day">{day}</div>
+      <div className="WeatherForecast-day">{day()}</div>
       <div className="WeatherForecast-Icon">
         <img
-          src={props.data.weather[0].icon}
+          src={`http://openweathermap.org/img/wn/${props.data.weather[0].icon}@2x.png`}
           alt={props.data.weather[0].description}
         />
       </div>
       <div className="WeatherForecast-Temperatures">
-        <span className="WeatherForecast-Temperature-max">{maxTemp} /</span>
-        <span className="WeatherForecast-Temperature-min">{minTemp}</span>
+        <span className="WeatherForecast-Temperature-max">
+          {maxTemp()}&nbsp;/&nbsp;
+        </span>
+        <span className="WeatherForecast-Temperature-min">{minTemp()}</span>
       </div>
     </div>
   );

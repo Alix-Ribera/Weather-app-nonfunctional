@@ -18,6 +18,13 @@ export default function Weatherbox(props) {
       icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       wind: response.data.wind.speed,
       city: response.data.name,
+      time: new Date(response.data.dt * 1000),
+      feelsLike: response.data.main.feels_like,
+      condition: response.data.weather[0].description,
+      timezone: response.data.timezone,
+      visibility: response.data.clouds.all,
+      country: response.data.sys.country,
+      backgroundImg: getBackgroundImage(response.data.weather[0].description),
     });
   }
   function handleSubmit(event) {
@@ -39,10 +46,37 @@ export default function Weatherbox(props) {
     let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleGather);
   }
+  function getBackgroundImage(description) {
+    let backgroundImg = "";
+    if (description === "clear sky") {
+      backgroundImg = "./IMG/clear-sky.jpg";
+    } else if (description === "few clouds") {
+      backgroundImg = "./IMG/cloudy.jpg";
+    } else if (description === "broken clouds") {
+      backgroundImg = "./IMG/cloudy.jpg";
+    } else if (description === "mist") {
+      backgroundImg = "./IMG/mist.jpg";
+    } else if (description === "rain") {
+      backgroundImg = "./IMG/rain.jpg";
+    } else if (description === "scattered clouds") {
+      backgroundImg = "./IMG/cloudy.jpg";
+    } else if (description === "shower rain") {
+      backgroundImg = "./IMG/rain.jpg";
+    } else if (description === "snow") {
+      backgroundImg = "./IMG/snow.jpg";
+    } else if (description === "thunder") {
+      backgroundImg = "./IMG/rain.jpg";
+    } else {
+    }
+    return backgroundImg;
+  }
 
   if (weatherData.ready) {
     return (
-      <div>
+      <div
+        className="backgroundImg"
+        style={{ backgroundImage: `url("${weatherData.backgroundImg}"` }}
+      >
         <div className="container-fluid">
           <div className="row align-items-end">
             <form className="searchbar" onSubmit={handleSubmit}>

@@ -11,6 +11,8 @@ export default function Weather(props) {
             <li>Humidity: {props.data.humidity}%</li>
             <li>Wind Speed: {props.data.wind} km/h</li>
             <li>Description: {props.data.description} </li>
+            <li>Timezone: {props.data.timezone} </li>
+
             <li>
               <img src={props.data.icon} alt={props.data.description}></img>
             </li>

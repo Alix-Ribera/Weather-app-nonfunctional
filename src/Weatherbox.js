@@ -20,10 +20,7 @@ export default function Weatherbox(props) {
       city: response.data.name,
       time: new Date(response.data.dt * 1000),
       feelsLike: response.data.main.feels_like,
-      condition: response.data.weather[0].description,
       timezone: response.data.timezone,
-      visibility: response.data.clouds.all,
-      country: response.data.sys.country,
       backgroundImg: getBackgroundImage(response.data.weather[0].description),
     });
   }

@@ -21,8 +21,8 @@ export default function Weatherbox(props) {
       time: new Date(response.data.dt * 1000),
       feelsLike: response.data.main.feels_like,
       timezone: response.data.timezone,
-      backgroundImg: getBackgroundImage(response.data.weather[0].description),
     });
+    getBackgroundImage(response.data.weather[0].description);
   }
   function handleSubmit(event) {
     event.preventDefault();
@@ -36,44 +36,42 @@ export default function Weatherbox(props) {
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(url).then(handleGather);
   }
-  function gatherCoords() {
+  function gatherCoords(position) {
     let apiKey = "4c78486a431b8f549b8a4a69a0294ae9";
-    let lon = props.coordinates.lon;
-    let lat = props.coordinates.lat;
-    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+    let lon = position.coords.longitude;
+    let lat = position.coords.latitude;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleGather);
   }
+  function getPosition(event) {
+    event.preventDefault();
+    navigator.geolocation.getCurrentPosition(gatherCoords);
+  }
   function getBackgroundImage(description) {
-    let backgroundImg = "";
     if (description === "clear sky") {
-      backgroundImg = "./IMG/clear-sky.jpg";
+      document.body.style.background = `url("./IMG/clear-sky.jpg")`;
     } else if (description === "few clouds") {
-      backgroundImg = "./IMG/cloudy.jpg";
+      document.body.style.background = `url("./IMG/cloudy.jpg")`;
     } else if (description === "broken clouds") {
-      backgroundImg = "./IMG/cloudy.jpg";
+      document.body.style.background = `url("./IMG/cloudy.jpg")`;
     } else if (description === "mist") {
-      backgroundImg = "./IMG/mist.jpg";
+      document.body.style.background = `url("./IMG/mist.jpg")`;
     } else if (description === "rain") {
-      backgroundImg = "./IMG/rain.jpg";
+      document.body.style.background = `url("./IMG/rain.jpg")`;
     } else if (description === "scattered clouds") {
-      backgroundImg = "./IMG/cloudy.jpg";
+      document.body.style.background = `url("./IMG/cloudy.jpg")`;
     } else if (description === "shower rain") {
-      backgroundImg = "./IMG/rain.jpg";
+      document.body.style.background = `url("./IMG/rain.jpg")`;
     } else if (description === "snow") {
-      backgroundImg = "./IMG/snow.jpg";
+      document.body.style.background = `url("./IMG/snow.jpg")`;
     } else if (description === "thunder") {
-      backgroundImg = "./IMG/rain.jpg";
+      document.body.style.background = `url("./IMG/rain.jpg")`;
     } else {
     }
-    return backgroundImg;
   }
-
   if (weatherData.ready) {
     return (
-      <div
-        className="backgroundImg"
-        style={{ backgroundImage: `url("${weatherData.backgroundImg}"` }}
-      >
+      <div className="backgroundImg">
         <div className="container-fluid">
           <div className="row align-items-end">
             <form className="searchbar" onSubmit={handleSubmit}>
@@ -90,7 +88,7 @@ export default function Weatherbox(props) {
               <button
                 className="searchbutton"
                 type="submit"
-                onClick={gatherCoords}
+                onClick={getPosition}
               >
                 Current location
               </button>

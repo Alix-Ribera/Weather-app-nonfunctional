@@ -2,7 +2,6 @@ html {
   min-height: 100%;
 }
 body {
-  background-image: url("IMG/clear-sky.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   font-family: "Shadows Into Light", cursive;
@@ -79,8 +78,14 @@ input {
   padding: 40px 0px 20px;
   color: white;
 }
+.dayspecs img {
+  size: 5px;
+}
 .WeatherForecast {
   margin: 100px 0px 30px 0px;
+}
+.WeatherForecast-Icon img {
+  size: 10px;
 }
 .authorCredit {
   text-align: center;

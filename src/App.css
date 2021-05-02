@@ -22,7 +22,7 @@ p {
   font-size: 20px;
 }
 a {
-  color: #8e0e1e;
+  color: #7498bb;
   text-decoration: none;
 }
 a:hover {
@@ -115,5 +115,5 @@ input {
 }
 .authorCredit a:hover {
   text-decoration: none;
-  color: #8e0e1e;
+  color: white;
 }
